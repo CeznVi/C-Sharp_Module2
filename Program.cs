@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Linq;
+using static System.Net.WebRequestMethods;
 
 namespace Module2
 {
@@ -194,7 +196,187 @@ namespace Module2
         //}
         /*кінець завдання 2*/
 
+        /////Завдання №3
+        //////Користувач вводить рядок із клавіатури. Необхідно
+        //////зашифрувати цей рядок, використовуючи шифр Цезаря.
+        //////Шифр Цезаря — це вид підстановочного шифру, в
+        //////якому кожна буква відкритого тексту заміняється на ту,
+        //////що віддалена від неї в алфавіті на сталу кількість позицій.
+        //////Наприклад, у шифрі зі зсувом правіше на 3, замість A була б
+        //////D, замість B-E, і т.д.Детальніше тут: https://uk.wikipedia.
+        //////org/wiki/Шифр_Цезаря.
+        //////Окрім механізму шифрування, реалізуйте механізм
+        //////розшифрування.
 
+        //static void Main(string[] args)
+        //{
+        //    Console.WriteLine("Please input text");
+        //    string text = Console.ReadLine();
+        //    Console.WriteLine("Please input key");
+        //    int key = Int32.Parse(Console.ReadLine());
+
+        //    ////Шифруємо текст
+        //    char[] temp = text.ToCharArray();
+
+        //    for (int i = 0; i < temp.Length; i++)
+        //    {
+        //        if (temp[i] == ' ')
+        //            temp[i] = temp[i];
+        //        else
+        //            temp[i] += (char)key;
+
+        //    }
+
+        //    string protectedText = new string(temp);
+
+        //    ////Дешефруємо текст
+        //    temp = protectedText.ToCharArray();
+
+        //    for (int i = 0; i < temp.Length; i++)
+        //    {
+        //        if (temp[i] == ' ')
+        //            temp[i] = temp[i];
+        //        else
+        //            temp[i] -= (char)key;
+        //    }
+        //    string unprotectedText = new string(temp);
+
+        //    Console.WriteLine();
+        //    Console.WriteLine($"Input text:\n{text}");
+        //    Console.WriteLine($"Input key:\n{key}");
+        //    Console.WriteLine();
+        //    Console.WriteLine($"Protected text:\n{protectedText}");
+        //    Console.WriteLine();
+        //    Console.WriteLine($"Unprotected text:\n{unprotectedText}");
+
+        //}
         /*кінець завдання 3*/
+
+
+        /////Завдання №4
+        /////Створіть додаток, який здійснює операції над матрицями:
+        //////■ Множення матриці на число;
+        //////■ Додавання матриць;
+        //////■ Добуток матриць.
+
+
+        ////Роздрукувати матрицю функція
+        //static void PrintMatrix(int[,] m)
+        //{
+        //    for (int i = 0; i < m.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < m.GetLength(1); j++)
+        //        {
+        //            Console.Write($"{m[i, j]} \t");
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //}
+
+        ////Функція генерації матриці із вказаними границями
+        //static int[,] GenerateMatrix(int row, int colum, int max, int min)
+        //{
+        //    int[,] a = new int[row, colum];
+        //    Random r = new Random();
+        //    ////Заповнюємо масив рандомними значеннями у введеному діапазоні
+        //    for (int i = 0; i < a.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < a.GetLength(1); j++)
+        //        {
+        //            a[i, j] = r.Next(min, max);
+        //        }
+        //    }
+
+        //    return a;
+        //}
+
+        ////Функція множення матриці на число
+        //static void MultMatrixOnNum(int[,] m, int num)
+        //{
+        //    for (int i = 0; i < m.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < m.GetLength(1); j++)
+        //        {
+        //            m[i, j] *= num;
+        //        }
+        //    }
+        //}
+
+        ////Функція додавання матриць, повертає матрицю
+        //static int[,] AddMatrixOnMatrix(int[,] m, int[,] m2)
+        //{
+        //    int[,] m3 = new int[m2.GetLength(0), m2.GetLength(1)];
+
+        //    if (m.GetLength(0) != m2.GetLength(0) || m.GetLength(1) != m2.GetLength(1))
+        //    {
+        //        Console.WriteLine("Неможлива операція, через різний розмір матриць");
+        //        return m3;
+        //    }
+
+        //    for (int i = 0; i < m.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < m.GetLength(1); j++)
+        //        {
+        //            m3[i, j] = m[i, j] + m2[i,j];
+        //        }
+        //    }
+        //    return m3;
+        //}
+
+        ////Функція множення матриць, повертає матрицю
+        //static int[,] MultMatrixOnMatrix(int[,] m, int[,] m2)
+        //{
+        //    int[,] m3 = new int[m2.GetLength(0), m2.GetLength(1)];
+
+        //    if (m.GetLength(0) != m2.GetLength(0) || m.GetLength(1) != m2.GetLength(1))
+        //    {
+        //        Console.WriteLine("Неможлива операція, через різний розмір матриць");
+        //        return m3;
+        //    }
+
+        //    for (int i = 0; i < m.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < m.GetLength(1); j++)
+        //        {
+        //            m3[i, j] = m[i, j] * m2[i, j];
+        //        }
+        //    }
+        //    return m3;
+        //}
+
+        ////мейн функція 
+        //static void Main(string[] args)
+        //{
+        //    //Генеруемо дві матриці
+        //    int[,] m1 = GenerateMatrix(3, 3, 10, -10);
+        //    int[,] m2 = GenerateMatrix(3, 3, 10, -10);
+
+        //    Console.WriteLine("Матриця 1:");
+        //    PrintMatrix(m1);
+        //    Console.WriteLine("\nМатриця 2:");
+        //    PrintMatrix(m2);
+
+        //    Console.WriteLine("Множення матриць на число. Введiть число");
+        //    int num = Int32.Parse(Console.ReadLine());
+
+        //    Console.WriteLine($"Результат множення матрицi 2 на число {num}");
+        //    MultMatrixOnNum(m2, num);
+        //    PrintMatrix(m2);
+
+        //    Console.WriteLine($"Результат додавання матриць 1 i 2");
+        //    int[,] m3 = AddMatrixOnMatrix(m1, m2);
+        //    PrintMatrix(m3);
+
+        //    Console.WriteLine($"Результат множення матриць 1 i 3");
+        //    int[,] m4 = AddMatrixOnMatrix(m1, m3);
+        //    PrintMatrix(m4);
+        //}
+
+        /*кінець завдання 4*/
+
+
+        //////Завдання №5
+
+        /*кінець завдання 5*/
     }
 }

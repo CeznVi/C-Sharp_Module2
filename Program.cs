@@ -13,13 +13,13 @@ namespace Module2
         ////масив В — випадковими числами за допомогою циклів.
         ////Вивести на екран значення масивів: масиву А — в один
         ////рядок, масиву В — у вигляді матриці.
-        ///Знайти у даних масивах 
-        ///загальний максимальний елемент, 
-        ///мінімальний елемент, 
-        ///загальну суму усіх елементів, 
-        ///загальний добуток усіх елементів, 
-        ///суму парних елементів масиву А, 
-        ///суму непарних стовпців масиву В.
+        /////Знайти у даних масивах 
+        /////загальний максимальний елемент, 
+        /////мінімальний елемент, 
+        /////загальну суму усіх елементів, 
+        /////загальний добуток усіх елементів, 
+        /////суму парних елементів масиву А, 
+        /////суму непарних стовпців масиву В.
 
         //static void Main(string[] args)
         //{
@@ -34,7 +34,7 @@ namespace Module2
         //    float[,] B = new float[3, 4];
 
         //    Random r = new Random();
-            
+
         //    for(int i = 0; i < B.GetLength(0); i++)
         //    {
         //        for (int j = 0; j < B.GetLength(1); j++)
@@ -115,7 +115,86 @@ namespace Module2
         //    Console.WriteLine($"Summ (element %2 != 0) in massive B {sumBnopar}");
 
         //}
-        
+
         /*кінець завдання 1*/
+
+        //////Завдання №2
+        //////Дано двовимірний масив розміром 5×5, заповнений випадковими числами з діапазону від –100 до 100.
+        /////Визначити суму елементів масиву, розташованих між мінімальним і максимальним елементами.
+        //static void Main(string[] args)
+        //{
+        //    int[,] a = new int[5, 5];
+        //    Random r = new Random();
+        //    ////Заповнюємо масив рандомними значеннями у введеному діапазоні
+        //    for (int i = 0; i < a.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < a.GetLength(1); j++)
+        //        {
+        //            a[i, j] = r.Next(-100, 100);
+        //        }
+        //    }
+        //    Console.WriteLine("Masive:");
+        //    for (int i = 0; i < a.GetLength(0); i++)
+        //    {
+        //        for (int j = 0; j < a.GetLength(1); j++)
+        //        {
+        //            Console.Write($"{a[i, j]} \t");
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //    ////Переводимо масив до виду одномірного
+        //    int[] temp = new int[a.Length];
+        //    temp = a.Cast<int>().ToArray();
+        //    int min = 0;
+        //    int minInd = 0;
+        //    int maxInd = 0;
+        //    int max = 0;
+        //    int sumelement = 0;
+        //    ////У циклі знаходимо максимальне і мінімальне значення, а також їхні індекси
+        //    for (int i = 0; i < temp.Length; i++)
+        //    {
+        //        if (i == 0)
+        //        {
+        //            min = temp[i];
+        //            max = temp[i];
+        //        }
+        //        if (max < temp[i])
+        //        {
+        //            max = temp[i];
+        //            maxInd = i;
+        //        }
+        //        else if (min > temp[i])
+        //        {
+        //            min = temp[i];
+        //            minInd = i;
+        //        }
+        //    }
+        //    ////Друкуємо отримону послідовність
+        //    if (minInd < maxInd)
+        //    {
+        //        for (int i = minInd; i <= maxInd; i++)
+        //        {
+        //            Console.Write($"{temp[i]} ");
+        //            sumelement += temp[i];
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //    else if (minInd > maxInd)
+        //    {
+        //        for (int i = minInd; i >= maxInd; i--)
+        //        {
+        //            Console.Write($"{temp[i]} ");
+        //            sumelement += temp[i];
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //    Console.WriteLine($"Minimal value is {min}");
+        //    Console.WriteLine($"Maximal value is {max}");
+        //    Console.WriteLine($"Summ element in min-max range array is {sumelement}");
+        //}
+        /*кінець завдання 2*/
+
+
+        /*кінець завдання 3*/
     }
 }

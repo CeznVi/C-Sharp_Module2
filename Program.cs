@@ -376,7 +376,49 @@ namespace Module2
 
 
         //////Завдання №5
+        //////Користувач з клавіатури вводить до рядка арифме-
+        //////тичний вираз.Додаток має підрахувати його результат.
+        //////Необхідно дотримуватися лише двох операцій: + і –.
+        ///***Додатково добавив * та /
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введіть арифметичний рядок по типу (1+4) або (31-4) (підтримка +-*/)");
+            string s = Console.ReadLine();
+
+
+            char[] separators = new char[] { '+', '-', '*', '/' };
+            char[] charsToTrim = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+            
+            char znak = (s.Trim(charsToTrim)).ToCharArray()[0];
+            string[] temp = s.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+           
+            int a = Int32.Parse(temp[0]);
+            int b = Int32.Parse(temp[1]);
+
+            int result = 0;
+
+            switch (znak)
+            {
+                case '+':
+                    result = a + b;
+                    break;
+                case '-':
+                    result = a - b;
+                    break;
+                case '*':
+                    result = a * b;
+                    break;
+                case '/':
+                    result = a / b;
+                    break;
+                default:   break;
+            }
+
+            Console.WriteLine($"Ви ввели наступний вираз {a} {znak} {b} = {result}");
+        }
 
         /*кінець завдання 5*/
+
     }
 }

@@ -431,31 +431,103 @@ namespace Module2
         //////Результат роботи додатку: Today is a good day for
         //////walking.I will try to walk near the sea.
 
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Введіть речення");
-            string text = Console.ReadLine();
-            string result = "";
+        //static void Main(string[] args)
+        //{
+        //    Console.WriteLine("Введіть речення");
+        //    string text = Console.ReadLine();
+        //    string result = "";
 
-            //ділимо наше речення на суб речення по ознаку "." на кінці речення
-            string[] temp = text.Split(".", StringSplitOptions.RemoveEmptyEntries);
+        //    //ділимо наше речення на суб речення по ознаку "." на кінці речення
+        //    string[] temp = text.Split(".", StringSplitOptions.RemoveEmptyEntries);
 
-            //убираємо пробіл в початку наших підреченнях
-            for (int i = 0; i < temp.Length; i++)
-                temp[i] = temp[i].Trim(' ');
-            
-            //Робимо в наших реченнях 1 літеру великою
-            for (int i = 0; i < temp.Length; i++)
-                temp[i] = temp[i].Substring(0, 1).ToUpper() + temp[i].Substring(1, temp[i].Length - 1);
+        //    //убираємо пробіл в початку наших підреченнях
+        //    for (int i = 0; i < temp.Length; i++)
+        //        temp[i] = temp[i].Trim(' ');
 
-            //Склеюємо під речення у едине реченні з додаванням у їх кінець крапки та пробілу 
-            for (int i = 0; i < temp.Length; i++)
-                result += temp[i] + ". ";      
+        //    //Робимо в наших реченнях 1 літеру великою
+        //    for (int i = 0; i < temp.Length; i++)
+        //        temp[i] = temp[i].Substring(0, 1).ToUpper() + temp[i].Substring(1, temp[i].Length - 1);
 
-            Console.WriteLine($"Модернізований рядок:\n{result}");
+        //    //Склеюємо під речення у едине реченні з додаванням у їх кінець крапки та пробілу 
+        //    for (int i = 0; i < temp.Length; i++)
+        //        result += temp[i] + ". ";      
 
-        }
+        //    Console.WriteLine($"Модернізований рядок:\n{result}");
+
+        //}
 
         /*кінець завдання 6*/
+
+        ///////Завдання №7
+        ///////Створіть додаток, який перевіряє текст на неприпу-
+        ///////стимі слова.Якщо неприпустиме слово знайдено, воно
+        ///////має бути замінено набором символів *. За підсумками
+        ///////роботи програми, необхідно показати статистику дій.
+        ///////
+        /*
+To be, or not to be, that is the question,
+Whether 'tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune,
+Or to take arms against a sea of troubles,
+And by opposing end them? To die: to sleep;
+No more; and by a sleep to say we end
+The heart-ache and the thousand natural shocks
+That flesh is heir to, 'tis a consummation
+Devoutly to be wish'd. To die, to sleep
+        */
+        ///////
+
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Введiть текст");
+            string text = "";
+            string temp = "";
+
+            while (true)
+            {
+                temp = Console.ReadLine();
+
+                if (String.IsNullOrEmpty(temp))
+                    break;
+
+                text += temp + '\n';
+                temp = null;
+            }
+
+            Console.WriteLine("Введiть неприпустиме слово");
+            string stopWord = Console.ReadLine();
+            
+            Console.WriteLine("Введiть чим замiняти неприпустиме слово");
+            string analog = Console.ReadLine();
+
+            //ділимо наше речення на суб речення по ознаку " " на кінці речення
+            char[] separators1 = new char[] { ' ', '.', ',', ':', ';' };
+            char[] separators = new char[] { ' ' };
+            int countStopWords = 0;
+
+
+            string[] textm = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+
+            for (int i = 0; i < textm.Length; i++)
+            {
+                if (textm[i].Trim(separators1).ToLower() == stopWord)
+                {
+                    textm[i] = analog;
+                    countStopWords++;
+                }
+            }
+
+            text = "";
+
+            for (int i = 0; i < textm.Length; i++)
+                text += textm[i] + " ";
+
+            Console.WriteLine($"\nМодернiзований рядок:\n{text}");
+            Console.WriteLine($"\nCтатистика: {countStopWords} замiни слова {stopWord} на {analog}");
+        }
+
+        /*кінець завдання 7*/
     }
 }

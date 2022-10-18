@@ -501,12 +501,12 @@ Devoutly to be wish'd. To die, to sleep
             Console.WriteLine("Введiть чим замiняти неприпустиме слово");
             string analog = Console.ReadLine();
 
-            //ділимо наше речення на суб речення по ознаку " " на кінці речення
+            
             char[] separators1 = new char[] { ' ', '.', ',', ':', ';' };
             char[] separators = new char[] { ' ' };
             int countStopWords = 0;
 
-
+            //ділимо наше речення на суб речення по ознаку " " на кінці речення
             string[] textm = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
 

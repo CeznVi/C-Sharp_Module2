@@ -379,46 +379,83 @@ namespace Module2
         //////Користувач з клавіатури вводить до рядка арифме-
         //////тичний вираз.Додаток має підрахувати його результат.
         //////Необхідно дотримуватися лише двох операцій: + і –.
-        ///***Додатково добавив * та /
+        //////***Додатково добавив * та /
 
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Введіть арифметичний рядок по типу (1+4) або (31-4) (підтримка +-*/)");
-            string s = Console.ReadLine();
+        //static void Main(string[] args)
+        //{
+        //    Console.WriteLine("Введіть арифметичний рядок по типу (1+4) або (31-4) (підтримка +-*/)");
+        //    string s = Console.ReadLine();
 
 
-            char[] separators = new char[] { '+', '-', '*', '/' };
-            char[] charsToTrim = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
-            
-            char znak = (s.Trim(charsToTrim)).ToCharArray()[0];
-            string[] temp = s.Split(separators, StringSplitOptions.RemoveEmptyEntries);
-           
-            int a = Int32.Parse(temp[0]);
-            int b = Int32.Parse(temp[1]);
+        //    char[] separators = new char[] { '+', '-', '*', '/' };
+        //    char[] charsToTrim = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-            int result = 0;
+        //    char znak = (s.Trim(charsToTrim)).ToCharArray()[0];
+        //    string[] temp = s.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
-            switch (znak)
-            {
-                case '+':
-                    result = a + b;
-                    break;
-                case '-':
-                    result = a - b;
-                    break;
-                case '*':
-                    result = a * b;
-                    break;
-                case '/':
-                    result = a / b;
-                    break;
-                default:   break;
-            }
+        //    int a = Int32.Parse(temp[0]);
+        //    int b = Int32.Parse(temp[1]);
 
-            Console.WriteLine($"Ви ввели наступний вираз {a} {znak} {b} = {result}");
-        }
+        //    int result = 0;
+
+        //    switch (znak)
+        //    {
+        //        case '+':
+        //            result = a + b;
+        //            break;
+        //        case '-':
+        //            result = a - b;
+        //            break;
+        //        case '*':
+        //            result = a * b;
+        //            break;
+        //        case '/':
+        //            result = a / b;
+        //            break;
+        //        default:   break;
+        //    }
+
+        //    Console.WriteLine($"Ви ввели наступний вираз {a} {znak} {b} = {result}");
+        //}
 
         /*кінець завдання 5*/
 
+        //////Завдання №6
+        //////Користувач з клавіатури вводить певний текст. Додаток
+        //////має змінювати регістр першої літери кожного речення на
+        //////літеру у верхньому регістрі.
+        //////Наприклад, якщо користувач ввів: 
+        //////
+        //////today is a good day for walking.i will try to walk near the sea.
+        //////
+        //////Результат роботи додатку: Today is a good day for
+        //////walking.I will try to walk near the sea.
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введіть речення");
+            string text = Console.ReadLine();
+            string result = "";
+
+            //ділимо наше речення на суб речення по ознаку "." на кінці речення
+            string[] temp = text.Split(".", StringSplitOptions.RemoveEmptyEntries);
+
+            //убираємо пробіл в початку наших підреченнях
+            for (int i = 0; i < temp.Length; i++)
+                temp[i] = temp[i].Trim(' ');
+            
+            //Робимо в наших реченнях 1 літеру великою
+            for (int i = 0; i < temp.Length; i++)
+                temp[i] = temp[i].Substring(0, 1).ToUpper() + temp[i].Substring(1, temp[i].Length - 1);
+
+            //Склеюємо під речення у едине реченні з додаванням у їх кінець крапки та пробілу 
+            for (int i = 0; i < temp.Length; i++)
+                result += temp[i] + ". ";      
+
+            Console.WriteLine($"Модернізований рядок:\n{result}");
+
+        }
+
+        /*кінець завдання 6*/
     }
 }
